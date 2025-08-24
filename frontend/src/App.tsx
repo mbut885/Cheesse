@@ -1,8 +1,13 @@
-
+/* This is the main application component */
+// ---------------- Imports ---------------- //
 import StartPage from './pages/StartPage'
-import { MoveLogProvider } from './features/history/moveLogStore'
+import { MoveLogProvider } from './chess/components/history/moveLogStore'
 import './App.css'
 
+/**
+ * App component - main entry point for the application.
+ * @returns {JSX.Element} - The rendered app component.
+ */
 function App() {
   return (
     <MoveLogProvider>
@@ -13,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
