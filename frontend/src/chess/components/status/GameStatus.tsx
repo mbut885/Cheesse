@@ -1,1 +1,0 @@
-// TODO Implement game status display (e.g., current turn, check/checkmate status)
