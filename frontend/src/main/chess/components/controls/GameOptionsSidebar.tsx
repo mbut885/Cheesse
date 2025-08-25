@@ -1,21 +1,44 @@
-/* This is the game options sidebar component */
-// ---------------- Imports ---------------- //
-import './GameOptionsSidebar.css'
+import React from 'react';
+import './GameOptionsSidebar.css';
 
 /**
- * GameOptionsSidebar component - Displays the game options sidebar.
- * @returns {JSX.Element} - The rendered component.
+ * GameOptionsSidebar component - Displays selectable game options.
+ * @param {Object} props
+ * @param {string} props.selectedOption - The currently selected option value.
+ * @param {function} props.onOptionChange - Callback when an option is selected.
+ * @param {Array<{value: string, label: string}>} props.options - List of options.
+ * @returns {JSX.Element}
  */
-export default function GameMoveLogSidebar() {
-    return (
-     <div className="game-options-wrapper">
+interface GameOption {
+  value: string;
+  label: string;
+}
+
+interface GameOptionsSidebarProps {
+  selectedOption: string;
+  onOptionChange: (value: string) => void;
+  options: GameOption[];
+}
+
+export default function GameOptionsSidebar({ selectedOption, onOptionChange, options }: GameOptionsSidebarProps) {
+  return (
+    <div className="game-options-wrapper">
       <div className="game-options-sidebar">
         <h1>Game Options</h1>
         <div className="button-col">
-         <button>End Turn</button>
-         <button>Undo</button>
-         <button>Redo</button>
-         <button>Forfeit</button>
+          {options && options.length > 0 ? (
+            options.map((opt: GameOption) => (
+              <button
+                key={opt.value}
+                className={opt.value === selectedOption ? 'selected' : ''}
+                onClick={() => {
+                  if (opt.value !== selectedOption) onOptionChange(opt.value);
+                }}
+              >
+                {opt.label}
+              </button>
+            ))
+          ) : null}
         </div>
       </div>
     </div>
