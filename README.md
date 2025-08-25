@@ -57,13 +57,13 @@ npm test
 | **Game logic**       | Implements official chess rules and piece movement | A1 |
 | **Legal move enforcement** | Only legal moves are allowed | A1 |
 | **Turn-based system**| Alternating turns between players | A1 |
-| **Capturing & scoring** | Capture pieces and calculate scores | A1 |
-| **Check & checkmate detection** | Detects check and checkmate states | A1 |
-| **Special rules**    | Castling, en passant, pawn promotion | A1 |
+| **Capturing & scoring** | Capture pieces and calculate scores | A2 (to do)|
+| **Check & checkmate detection** | Detects check and checkmate states | A2 (to do) |
+| **Special rules**    | Castling, en passant, pawn promotion | A2 (to do) |
 | **Move history**     | Tracks moves with option to restart game | A1 |
-| **Game end detection** | Handles checkmate, stalemate, resignation | A1 |
+| **Game end detection** | Handles checkmate, stalemate, resignation | A2 (to do) |
 | **Local PvP gameplay** | Two-player mode on same machine | A1 |
-| **Single-player with AI** | Play against bots of varying difficulty | A2 (planned) |
+| **Single-player with AI** | Play against bots of varying difficulty | A2 (stretch goal) |
 | **Enhanced visuals** | Improved graphics and animations | A2 (planned) |
 | **Online multiplayer** | Play against others online | A2 (stretch goal) |
 
@@ -75,6 +75,7 @@ npm test
 - Basic graphical user interface  
 
 ### A2 Release (Planned)  
+- Complete game endings and special rules
 - Single-player gameplay against AI (Varying difficulty: Easy, Medium, Hard)
 - Enhanced animations and visuals  
 - Potential online multiplayer (stretch goal)  
