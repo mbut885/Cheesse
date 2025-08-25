@@ -2,7 +2,7 @@
 
 // ---------------- Imports ---------------- //
 import { useState, useRef, useEffect } from "react";
-import Referee from "../../../referee/referee";
+import Referee from "../../../referee/Referee";
 import { type SquareId, initialPieces } from "../BoardConfig";
 import { squareToCoords } from "../../../utils/chessUtils";
 import { useRecordMove } from "./useRecordMove";

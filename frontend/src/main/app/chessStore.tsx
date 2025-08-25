@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo } from 'react';
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 interface ChessMove {
     white?: string;
@@ -39,8 +39,9 @@ export function ChessProvider({ children }: { children: ReactNode }): JSX.Elemen
 
     const value = useMemo(() => ({ 
         moveHistory, 
+        currentMove,
         addMove 
-    }), [moveHistory]);
+    }), [moveHistory, currentMove]);
 
     return (
         <ChessContext.Provider value={value}>
