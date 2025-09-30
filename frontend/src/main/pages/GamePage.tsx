@@ -30,7 +30,7 @@ export default function GamePage() {
 
         <div className="board-timer-wrapper">
           <Board />
-          <Timer />
+          <Timer initialSeconds={120} />
         </div>
 
       <GameOptionsSidebar
