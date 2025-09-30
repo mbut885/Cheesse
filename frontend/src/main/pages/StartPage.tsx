@@ -17,6 +17,32 @@ export default function StartPage() {
         setButtonsVisible(false)
     }
 
+    const [selectTimer, changeSelectTimer] = useState(0); // 0 means no timer selected
+
+    const [initialSeconds, setInitialSeconds] = useState(0);
+
+    const setTimer = (seconds: number) => {
+        setInitialSeconds(seconds);
+    }
+
+    const onTimerButtonClick = (option: number) => {
+        if (option === selectTimer) option = 0; // Deselect if already selected
+        changeSelectTimer(option);
+        switch (option) {
+            case 1:
+                setTimer(300);
+                break;
+            case 2:
+                setTimer(600);
+                break;
+            case 3:
+                setTimer(3600);
+                break;
+            default:
+                setTimer(0);
+        }
+    }
+
     // Render the start page or the game page based on state
     return (
         <div className="start-page-wrapper">
@@ -30,15 +56,21 @@ export default function StartPage() {
                             <button className="option-button">Online PVP</button>
                         </div>
                         <div className="timer-buttons">
-                            <button className="option-button">5 Mins</button>
-                            <button className="option-button">10 Mins</button>
-                            <button className="option-button">60 Mins</button>
+                            <button className="option-button" 
+                                onClick={() => onTimerButtonClick(1)}
+                                style={{ border: selectTimer === 1 ? '10px solid gold' : 'none' }}>5 Mins</button>
+                            <button className="option-button" 
+                                onClick={() => onTimerButtonClick(2)}
+                                style={{ border: selectTimer === 2 ? '10px solid gold' : 'none' }}>10 Mins</button>
+                            <button className="option-button" 
+                                onClick={() => onTimerButtonClick(3)}
+                                style={{ border: selectTimer === 3 ? '10px solid gold' : 'none' }}>60 Mins</button>
                         </div>
                         <button className="start-button" onClick={showGamePage}> Start </button>
                     </div>
                 </div>
             )}
-            {gamePage ? <GamePage /> : null};
+            {gamePage ? <GamePage initialSeconds={initialSeconds} /> : null}
         </div>
     );
 }
