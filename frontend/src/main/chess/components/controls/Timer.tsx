@@ -10,7 +10,7 @@ export default function Timer({ initialSeconds }: { initialSeconds: number }) {
 
     const [isWhiteTurn, changeTurn] = useState(true); // This should be managed by the game state
 
-    const [isRunning, setIsRunning] = useState(false);
+    const [isRunning, setIsRunning] = useState(true);
 
     const formatTime = (totalSeconds: number) => {
         const minutes = Math.floor(totalSeconds / 60);
