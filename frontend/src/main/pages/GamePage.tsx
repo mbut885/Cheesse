@@ -14,7 +14,7 @@ import Timer from "../chess/components/controls/Timer";
  * @returns {JSX.Element}
  */
 
-export default function GamePage() {
+export default function GamePage({ initialSeconds }: { initialSeconds: number }) {
   const options = [
     { value: 'endturn', label: 'End Turn' },
     { value: 'undo', label: 'Undo' },
@@ -30,7 +30,8 @@ export default function GamePage() {
 
         <div className="board-timer-wrapper">
           <Board />
-          <Timer initialSeconds={120} />
+          {initialSeconds > 0 ? <Timer initialSeconds={initialSeconds} /> : 
+          <div className="Timerfiller"></div>}
         </div>
 
       <GameOptionsSidebar

@@ -13,3 +13,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.Timerfiller {
+    height: 50px; /* Adjust height as needed */
+}
