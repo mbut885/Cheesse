@@ -6,8 +6,9 @@
     place-items: center;
     align-items: center;
     width: fit-content;
-    height: 100vh;
-  
+    height: 80vh;
+    margin-top: 48px;
+    padding-bottom: -20px;
 }
 
 /* Board wrapper styles */

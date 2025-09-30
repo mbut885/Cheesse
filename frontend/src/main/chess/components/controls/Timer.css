@@ -1,0 +1,9 @@
+.timerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid #000;
+  width: fit-content;
+
+  margin-bottom: -20px;
+}

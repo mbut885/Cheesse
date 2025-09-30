@@ -7,6 +7,7 @@ import Board from "../chess/components/board/Board";
 import GameMoveLogSidebar from '../chess/components/controls/GameMoveLogSidebar';
 import GameOptionsSidebar from '../chess/components/controls/GameOptionsSidebar';
 import { useState } from 'react';
+import Timer from "../chess/components/controls/Timer";
 
 /**
  * GamePage component - main container for the chess game UI.
@@ -26,7 +27,13 @@ export default function GamePage() {
   return (
     <div className="game-page-div">
       <GameMoveLogSidebar />
-      <Board />
+
+        <div>
+
+          <Board />
+          <Timer />
+        </div>
+
       <GameOptionsSidebar
         selectedOption={selectedOption}
         onOptionChange={setSelectedOption}
