@@ -28,8 +28,7 @@ export default function GamePage() {
     <div className="game-page-div">
       <GameMoveLogSidebar />
 
-        <div>
-
+        <div className="board-timer-wrapper">
           <Board />
           <Timer />
         </div>

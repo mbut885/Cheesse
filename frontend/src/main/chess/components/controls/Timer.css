@@ -2,8 +2,28 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 2px solid #000;
+  border: 2px solid #ffffff;
   width: fit-content;
 
   margin-bottom: -20px;
+}
+
+.whiteTimerContainer {
+    margin-right: 10px;
+    margin-left: 10px;
+
+    filter: brightness(100%); /* Initial brightness */
+
+    background-color: blue;
+
+}
+
+.whiteTimerContainer:hover{
+    filter: brightness(150%);
+}
+
+.blackTimerContainer {
+  margin-left: 10px;
+  margin-right: 10px;
+
 }
