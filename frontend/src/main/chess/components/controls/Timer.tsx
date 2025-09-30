@@ -44,7 +44,7 @@ export default function Timer({ initialSeconds }: { initialSeconds: number }) {
             </div>
             <div className="blackTimerContainer" 
                 onClick={() => !isWhiteTurn ? changeTurn(!isWhiteTurn) : null} 
-                onKeyDown={(e) => (e.key === "Enter" && isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
+                onKeyDown={(e) => (e.key === "Enter" && !isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
                 style={{ backgroundColor: !isWhiteTurn ? "#fff700ff" : "transparent" }}
                 >
                 <h3 className="blackTimer">{formatTime(blackSeconds)}</h3>
