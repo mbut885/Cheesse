@@ -1,6 +1,5 @@
 import "./Timer.css";
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 
 export default function Timer({ initialSeconds }: { initialSeconds: number }) {
 
@@ -38,16 +37,17 @@ export default function Timer({ initialSeconds }: { initialSeconds: number }) {
             <div className="whiteTimerContainer" 
                 onClick={() => isWhiteTurn ? changeTurn(!isWhiteTurn) : null}
                 onKeyDown={(e) => (e.key === "Enter" && isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
-                style={{ backgroundColor: isWhiteTurn ? "#fff700ff" : "transparent" }}
+                style={{ backgroundColor: isWhiteTurn ? "#ffffff" : "transparent" }}
             >
-                <h3 className="whiteTimer">{formatTime(whiteSeconds)}</h3>
+                <h3 className="whiteTimer" style={{ color: "black" }}>{formatTime(whiteSeconds)}</h3>
             </div>
+            <img src="/src/main/assets/pause.png" alt="Timer" className="timerImage" style={{ width: "65px", height: "65px" }} />
             <div className="blackTimerContainer" 
                 onClick={() => !isWhiteTurn ? changeTurn(!isWhiteTurn) : null} 
                 onKeyDown={(e) => (e.key === "Enter" && !isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
-                style={{ backgroundColor: !isWhiteTurn ? "#fff700ff" : "transparent" }}
+                style={{ backgroundColor: !isWhiteTurn ? "#111111" : "transparent" }}
                 >
-                <h3 className="blackTimer">{formatTime(blackSeconds)}</h3>
+                <h3 className="blackTimer" style={{ color: !isWhiteTurn ? "#ffffff" : "#000000" }}>{formatTime(blackSeconds)}</h3>
             </div>
 
         </div>

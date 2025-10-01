@@ -2,10 +2,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 2px solid #ffffff;
   width: fit-content;
 
-  margin-bottom: -20px;
+  margin-bottom: -25px;
+  background-image: url("../../../assets/timerBackground.png");
+  background-position: center;
+  background-size: cover;
+  image-rendering: pixelated;
+  border-top: solid 5px #2e2010;
+  border-bottom: solid 5px #2e2010;
 }
 
 .whiteTimerContainer {
