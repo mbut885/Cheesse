@@ -32,18 +32,29 @@ export default function Timer({ initialSeconds }: { initialSeconds: number }) {
         return () => clearInterval(timer);
     }, [isRunning, isWhiteTurn]);
 
+    const onPauseClick = () => {
+        setIsRunning(!isRunning);
+        console.log("Timer paused/resumed");
+    };
+
     return (
         <div className="timerWrapper">
             <div className="whiteTimerContainer" 
-                onClick={() => isWhiteTurn ? changeTurn(!isWhiteTurn) : null}
+                onClick={() => isRunning && isWhiteTurn ? changeTurn(!isWhiteTurn) : null}
                 onKeyDown={(e) => (e.key === "Enter" && isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
                 style={{ backgroundColor: isWhiteTurn ? "#ffffff" : "transparent" }}
             >
                 <h3 className="whiteTimer" style={{ color: "black" }}>{formatTime(whiteSeconds)}</h3>
             </div>
-            <img src="/src/main/assets/pause.png" alt="Timer" className="timerImage" style={{ width: "65px", height: "65px" }} />
+            
+            <img src="/src/main/assets/pause.png" 
+                alt="Timer" className="timerImage" style={{ width: "65px", height: "65px" }} 
+                onClick={onPauseClick}
+                onKeyDown={(e) => (e.key === "space") ? onPauseClick() : null}
+                />
+            
             <div className="blackTimerContainer" 
-                onClick={() => !isWhiteTurn ? changeTurn(!isWhiteTurn) : null} 
+                onClick={() => isRunning &&  !isWhiteTurn ? changeTurn(!isWhiteTurn) : null} 
                 onKeyDown={(e) => (e.key === "Enter" && !isWhiteTurn) ? changeTurn(!isWhiteTurn) : null}
                 style={{ backgroundColor: !isWhiteTurn ? "#111111" : "transparent" }}
                 >
