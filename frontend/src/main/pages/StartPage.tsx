@@ -3,7 +3,8 @@
 // ---------------- Imports ---------------- //
 import "./StartPage.css"
 import GamePage from './GamePage'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ChessProvider, useChessStore } from '../app/chessStore';
 
 /**
  * StartPage component - Displays the initial game setup options.
@@ -70,7 +71,24 @@ export default function StartPage() {
                     </div>
                 </div>
             )}
-            {gamePage ? <GamePage initialSeconds={initialSeconds} /> : null}
+            {gamePage ? (
+                <ChessProvider>
+                    <GameWithProvider initialSeconds={initialSeconds} />
+                </ChessProvider>
+            ) : null}
         </div>
     );
+}
+
+function GameWithProvider({ initialSeconds }: { initialSeconds: number }) {
+    // This component runs inside ChessProvider and can set selectedSeconds
+    const { setSelectedSeconds } = useChessStore();
+
+    useEffect(() => {
+        if (initialSeconds > 0) setSelectedSeconds(initialSeconds);
+        else setSelectedSeconds(null);
+        // intentionally only run on mount/change of initialSeconds
+    }, [initialSeconds, setSelectedSeconds]);
+
+    return <GamePage />;
 }

@@ -8,13 +8,14 @@ import GameMoveLogSidebar from '../chess/components/controls/GameMoveLogSidebar'
 import GameOptionsSidebar from '../chess/components/controls/GameOptionsSidebar';
 import { useState } from 'react';
 import Timer from "../chess/components/controls/Timer";
+import { useChessStore } from '../app/chessStore';
 
 /**
  * GamePage component - main container for the chess game UI.
  * @returns {JSX.Element}
  */
 
-export default function GamePage({ initialSeconds }: { initialSeconds: number }) {
+export default function GamePage() {
   const options = [
     { value: 'endturn', label: 'End Turn' },
     { value: 'undo', label: 'Undo' },
@@ -30,8 +31,8 @@ export default function GamePage({ initialSeconds }: { initialSeconds: number })
 
         <div className="board-timer-wrapper">
           <Board />
-          {initialSeconds > 0 ? <Timer initialSeconds={initialSeconds} /> : 
-          <div className="Timerfiller"></div>}
+          {/** If selectedSeconds in the store is non-null we have a timer */}
+          {useChessStore().selectedSeconds !== null ? <Timer/> : <div className="Timerfiller"></div>}
         </div>
 
       <GameOptionsSidebar
