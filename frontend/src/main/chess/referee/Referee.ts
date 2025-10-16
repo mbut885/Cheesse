@@ -7,7 +7,13 @@ export default class Referee {
   private prevY = 0;
   private newX = 0;
   private newY = 0;
+  private moveCount = 0;
   private destPiece?: string;
+
+
+  setMoveCount(moveCount: number) {
+      this.moveCount = moveCount;
+  }
 
   /**
   * Validates a move for a given piece.
@@ -27,9 +33,7 @@ export default class Referee {
     newX: number,
     newY: number,
     piece: string,
-    destPiece?: string,
-    // true if it's white's turn, false if black's turn
-    isWhiteTurn: boolean = true,
+    destPiece?: string
   ): boolean {
 
     // Set up the board state
@@ -44,9 +48,8 @@ export default class Referee {
     const dx = newX - prevX;
     const dy = newY - prevY;
 
-    // checks if selected piece's colour matches whose turn it is
-    const pieceColor = piece.split('_')[1];
-    if ((pieceColor === 'white' && !isWhiteTurn) || (pieceColor === 'black' && isWhiteTurn)) {
+    // checks if selected piece's colour is the one whose turn it is
+    if (((piece.split('_')[1] == "white") && (this.moveCount % 2 == 1)) || ((piece.split('_')[1] == "black") && (this.moveCount % 2 == 0))) {
       return false;
     }
 
