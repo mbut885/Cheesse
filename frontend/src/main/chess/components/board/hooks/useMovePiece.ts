@@ -17,6 +17,9 @@ export function useMovePiece() {
   const [pieces, setPieces] = useState(initialPieces);
   const moveInProgress = useRef(false);
 
+  // read turn information from global chess store
+  const { isWhiteTurn } = useChessStore();
+
   // Persistent Referee instance
   const referee = useRef(new Referee()).current;
 
@@ -52,8 +55,7 @@ export function useMovePiece() {
       const [prevX, prevY] = squareToCoords(from);
       const [newX, newY] = squareToCoords(to);
 
-      referee.setMoveCount(moveCountRef.current);
-      if (!referee.isValidMove(boardArray.current, prevX, prevY, newX, newY, piece, destPiece)) {
+      if (!referee.isValidMove(boardArray.current, prevX, prevY, newX, newY, piece, destPiece, isWhiteTurn)) {
         console.warn(`Invalid move from ${from} to ${to}`);
         return prev;
       }
