@@ -3,6 +3,7 @@
 // ---------------- Imports ---------------- //
 import { useState, useRef, useEffect } from "react";
 import Referee from "../../../referee/Referee";
+import { useChessStore } from '../../../../app/chessStore';
 import { type SquareId, initialPieces } from "../BoardConfig";
 import { squareToCoords } from "../../../utils/chessUtils";
 import { useRecordMove } from "./useRecordMove";
@@ -18,6 +19,9 @@ export function useMovePiece() {
 
   // Persistent Referee instance
   const referee = useRef(new Referee()).current;
+
+  // change turn function from global chess store
+  const { changeTurn } = useChessStore();
 
   // Persistent move counter
   const moveCountRef = useRef(0);
@@ -65,6 +69,7 @@ export function useMovePiece() {
       if (!moveInProgress.current) {
         moveInProgress.current = true;
         recordMove(from, to, piece);
+        changeTurn();
         setTimeout(() => { moveInProgress.current = false; }, 0);
       }
 

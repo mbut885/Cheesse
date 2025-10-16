@@ -7,7 +7,8 @@ interface ChessMove {
 }
 
 interface ChessState {
-    // move history
+    
+    // move history (never used for now)
     moveHistory: readonly ChessMove[];
     currentMove: number;
     addMove: (move: string) => void;
@@ -85,7 +86,7 @@ export function ChessProvider({ children }: { children: ReactNode }): JSX.Elemen
         else setIsWhiteTurn(prev => !prev);
     };
 
-    const toggleRunning = () => setIsRunning(prev => !prev);
+    const toggleRunning = () => setIsRunning(!isRunning);
 
     const resetTimers = (seconds?: number) => {
         const s = typeof seconds === 'number' ? seconds : selectedSeconds ?? 0;
