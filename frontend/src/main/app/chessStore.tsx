@@ -7,7 +7,8 @@ interface ChessMove {
 }
 
 interface ChessState {
-    // move history
+    
+    // move history (never used for now)
     moveHistory: readonly ChessMove[];
     currentMove: number;
     addMove: (move: string) => void;
